@@ -1,6 +1,6 @@
 # hide&seek
 
-This template should help get you started developing with Vue 3 in Vite.
+This is the web app for the Kville 2025 summer game: Hide & Seek Sherlock
 
 ## Recommended IDE Setup
 
