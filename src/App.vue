@@ -1,24 +1,53 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+  <v-layout>
+      <v-app-bar color="#161717" scroll-behavior="hide elevate fade-image">
+        <v-app-bar-nav-icon variant="text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+        <v-toolbar-title>Hide & seek</v-toolbar-title>
 
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
+        <v-spacer></v-spacer>
 
-  <RouterView />
+        <!-- <template v-if="$vuetify.display.mdAndUp">
+          <v-btn icon="mdi-magnify" variant="text"></v-btn>
+
+          <v-btn icon="mdi-filter" variant="text"></v-btn>
+        </template>
+
+        <v-btn icon="mdi-dots-vertical" variant="text"></v-btn> -->
+      </v-app-bar>
+
+      <v-navigation-drawer
+        v-model="drawer"
+        :location="$vuetify.display.mobile ? 'bottom' : undefined"
+        temporary
+      >
+        <v-list
+          :items="items"
+        ></v-list>
+      </v-navigation-drawer>
+
+      <v-main >
+        <v-container>
+          <RouterView />
+        </v-container>
+      </v-main>
+    </v-layout>
 </template>
+
+<script setup lang="ts">
+import { RouterLink, RouterView } from 'vue-router'
+import { ref, watch } from 'vue'
+
+const drawer = ref(false)
+const items = [
+  { title: 'Home', icon: 'mdi-home', to: '/' },
+  { title: 'About', icon: 'mdi-help', to: '/about' },
+  { title: 'Contact', icon: 'mdi-email', to: '/contact' },
+]
+
+</script>
+
 
 <style scoped>
 header {
