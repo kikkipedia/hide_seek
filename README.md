@@ -1,4 +1,4 @@
-# hide&seek
+# Hide & Seek Sherlock
 
 This is the web app for the Kville 2025 summer game: Hide & Seek Sherlock
 
